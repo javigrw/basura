@@ -11,7 +11,7 @@ public class RankingTest {
 		String[] rankingElements = {"top1","top2","top3","top4","top5","top6","top7","top8","top9","top10"};
 		Ranking<String> ranking= new Ranking<>(rankingElements);
 		
-		assertNotNull(ranking);
+		assertNotNull(ranking.top);
 		assertArrayEquals(rankingElements, ranking.top);
 		
 	}
