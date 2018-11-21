@@ -18,8 +18,12 @@ public class RankingTest {
 	
 	@Test
 	public void testCustomRanking() {
-		//TODO
-		fail("Not yet implemented");
+		int size = 5;
+		String[] rankingElements = {"top1", "top2", "top3", "top4", "top5"};
+		Ranking<String> ranking = new Ranking<>(rankingElements,size);
+		
+		assertNotNull(ranking.top);
+		assertArrayEquals(rankingElements,ranking.top);
 	}
 	
 	@Test
