@@ -14,4 +14,15 @@ public class Ranking<Element> {
 	Ranking(Element[] rankData){
 		//TODO not implemented yet
 	}
+	/**
+	 * Creates a top ranking with variable size from an array of elements.
+	 * The order in the array will match the position at the ranking.
+	 * rankData[0] will be top 1
+	 * rankData[9] will be top 10
+	 * @param rankData array of elements
+	 * @param topSize	can be equal or bigger than rankData size
+	 */
+	Ranking(Element[] rankData, int topSize){
+		//TODO not implemented yet
+	}
 }
