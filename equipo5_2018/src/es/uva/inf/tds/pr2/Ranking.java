@@ -11,7 +11,7 @@ public class Ranking<Element> {
 	 * rankData[9] will be top 10
 	 * @param rankData array with size of 10
 	 */
-	Ranking(Element[] rankData){
+	public Ranking(Element[] rankData){
 		//TODO not implemented yet
 	}
 	/**
@@ -22,7 +22,7 @@ public class Ranking<Element> {
 	 * @param rankData array of elements
 	 * @param topSize	can be equal or bigger than rankData size
 	 */
-	Ranking(Element[] rankData, int topSize){
+	public Ranking(Element[] rankData, int topSize){
 		//TODO not implemented yet
 	}
 }

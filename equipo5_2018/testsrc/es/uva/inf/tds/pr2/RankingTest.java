@@ -20,7 +20,7 @@ public class RankingTest {
 	public void testCustomRanking() {
 		int size = 5;
 		String[] rankingElements = {"top1", "top2", "top3", "top4", "top5"};
-		Ranking<String> ranking = new Ranking<>(rankingElements,size);
+		Ranking<String> ranking = new Ranking<>(rankingElements, size);
 		
 		assertNotNull(ranking.top);
 		assertArrayEquals(rankingElements,ranking.top);
