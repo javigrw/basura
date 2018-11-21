@@ -36,4 +36,14 @@ public class Ranking<Element> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+	 * Returns the position of the element
+	 * @param element
+	 * @return position	the position of the element at the ranking
+	 */
+	public int getPositionFromElementValue(Element element) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
