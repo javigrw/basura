@@ -8,8 +8,8 @@ public class RankingTest {
 	
 	@Test
 	public void testDefaultRanking() {
-		int[] rankingElements = {1,2,3,4,5,6,7,8,9,10};
-		Ranking<int> ranking= new Ranking<>(rankingElements);
+		String[] rankingElements = {"top1","top2","top3","top4","top5","top6","top7","top8","top9","top10"};
+		Ranking<String> ranking= new Ranking<>(rankingElements);
 		
 		assertNotNull(ranking);
 		assertArrayEquals(rankingElements, ranking.top);
