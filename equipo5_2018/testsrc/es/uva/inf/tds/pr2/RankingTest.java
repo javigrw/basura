@@ -5,11 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class RankingTest {
-
+	
 	@Test
 	public void testDefaultRanking() {
-		//TODO
-		fail("Not yet implemented");
+		int[] rankingElements = {1,2,3,4,5,6,7,8,9,10};
+		Ranking<int> ranking= new Ranking<>(rankingElements);
+		
+		assertNotNull(ranking);
+		assertArrayEquals(rankingElements, ranking.top);
+		
 	}
 	
 	@Test
@@ -53,5 +57,4 @@ public class RankingTest {
 		//TODO
 		fail("Not yet implemented");
 	}
-
 }
