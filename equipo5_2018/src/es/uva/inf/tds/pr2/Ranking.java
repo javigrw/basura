@@ -14,6 +14,7 @@ public class Ranking<Element> {
 	public Ranking(Element[] rankData){
 		//TODO not implemented yet
 	}
+	
 	/**
 	 * Creates a top ranking with variable size from an array of elements.
 	 * The order in the array will match the position at the ranking.
@@ -24,5 +25,15 @@ public class Ranking<Element> {
 	 */
 	public Ranking(Element[] rankData, int topSize){
 		//TODO not implemented yet
+	}
+	
+	/**
+	 * Returns the element at the ranking position desired
+	 * @param position
+	 * @return element at the ranking position
+	 */
+	public String getElementByPosition(int position) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
