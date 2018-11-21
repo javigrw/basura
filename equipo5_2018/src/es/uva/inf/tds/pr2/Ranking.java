@@ -32,7 +32,7 @@ public class Ranking<Element> {
 	 * @param position
 	 * @return element at the ranking position
 	 */
-	public String getElementByPosition(int position) {
+	public Element getElementByPosition(int position) {
 		// TODO Auto-generated method stub
 		return null;
 	}
