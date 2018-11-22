@@ -62,4 +62,16 @@ public class Ranking<Element> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	/**
+	 * Returns true if the element exists at the ranking or if an object with the
+	 * same value does
+	 * 
+	 * @param element
+	 * @return
+	 */
+	public boolean exists(Element element) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
