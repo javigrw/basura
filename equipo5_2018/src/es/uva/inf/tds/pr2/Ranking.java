@@ -64,22 +64,33 @@ public class Ranking<Element> {
 	}
 
 	/**
-	 * Returns true if the element exists at the ranking or if an object with the
-	 * same value does
+	 * Returns true if an element with the same value exists at the ranking
 	 * 
 	 * @param element
 	 * @return
 	 */
-	public boolean exists(Element element) {
+	public boolean existsValue(Element element) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	/**
-	 * Returns an array that shows gained or lost positions regarding another ranking
-	 * rankings. E.g(target {A,B,C,D} This {C,A,B,D} Differences {2,-1,-1,0} )
+	 * Returns true if the specific element exists at the ranking
 	 * 
-	 * @param targetRanking 
+	 * @param element
+	 * @return
+	 */
+	public boolean existsReference(Element element) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * Returns an array that shows gained or lost positions regarding another
+	 * ranking rankings. E.g(target {A,B,C,D} This {C,A,B,D} Differences {2,-1,-1,0}
+	 * )
+	 * 
+	 * @param targetRanking
 	 * @return array that shows gained or lost positions between two rankings
 	 */
 	public int[] compareWith(Ranking<Element> targetRanking) {
