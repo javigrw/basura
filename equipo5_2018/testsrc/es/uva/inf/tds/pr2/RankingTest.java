@@ -65,7 +65,7 @@ public class RankingTest {
 
 	@Test
 	public void testExistsElementValue() {
-		
+
 		String[] rankingElements = { "top1", "top2", "top3", "top4", "top5", "top6", "top7", "top8", "top9", "top10" };
 		Ranking<String> ranking = new Ranking<>(rankingElements);
 
@@ -78,7 +78,8 @@ public class RankingTest {
 
 		String expectedElement = "top1";
 		String notExpectedElement = "top54";
-		String[] rankingElements = { expectedElement, "top2", "top3", "top4", "top5", "top6", "top7", "top8", "top9", "top10" };
+		String[] rankingElements = { expectedElement, "top2", "top3", "top4", "top5", "top6", "top7", "top8", "top9",
+				"top10" };
 		Ranking<String> ranking = new Ranking<>(rankingElements);
 
 		assertTrue(ranking.exists(expectedElement));
@@ -87,7 +88,17 @@ public class RankingTest {
 
 	@Test
 	public void testCompareWith() {
-		// TODO
-		fail("Not yet implemented");
+
+		String[] dataBefore = { "Alfonso", "Beatriz", "Carlos", "Diana", "Ernesto", "Fatima", "Guillermo", "Helena",
+				"Ignacio", "Julia" };
+		String[] dataAfter = { "Helena", "Alfonso", "Fatima", "Ernesto", "Carlos", "Diana", "Ignacio", "Guillermo",
+				"Beatriz", "Julia" };
+		int[] expectedResult = { 7, -1, 3, 1, -2, 2, 2, -1, -7, 0 };
+
+		Ranking<String> rankingBefore = new Ranking<>(dataBefore);
+		Ranking<String> rankingAfter = new Ranking<>(dataAfter);
+
+		assertArrayEquals(expectedResult, rankingAfter.compareWith(dataAfter));
+
 	}
 }
