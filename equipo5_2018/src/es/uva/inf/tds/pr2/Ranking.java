@@ -74,4 +74,16 @@ public class Ranking<Element> {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+	 * Returns an array that shows gained or lost positions regarding another ranking
+	 * rankings. E.g(target {A,B,C,D} This {C,A,B,D} Differences {2,-1,-1,0} )
+	 * 
+	 * @param targetRanking 
+	 * @return array that shows gained or lost positions between two rankings
+	 */
+	public int[] compareWith(Ranking<Element> targetRanking) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
