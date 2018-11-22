@@ -65,14 +65,24 @@ public class RankingTest {
 
 	@Test
 	public void testExistsElementValue() {
-		// TODO
-		fail("Not yet implemented");
+		
+		String[] rankingElements = { "top1", "top2", "top3", "top4", "top5", "top6", "top7", "top8", "top9", "top10" };
+		Ranking<String> ranking = new Ranking<>(rankingElements);
+
+		assertTrue(ranking.exists("top1"));
+		assertFalse(ranking.exists("top54"));
 	}
 
 	@Test
 	public void testExistsElementReference() {
-		// TODO
-		fail("Not yet implemented");
+
+		String expectedElement = "top1";
+		String notExpectedElement = "top54";
+		String[] rankingElements = { expectedElement, "top2", "top3", "top4", "top5", "top6", "top7", "top8", "top9", "top10" };
+		Ranking<String> ranking = new Ranking<>(rankingElements);
+
+		assertTrue(ranking.exists(expectedElement));
+		assertFalse(ranking.exists(notExpectedElement));
 	}
 
 	@Test
