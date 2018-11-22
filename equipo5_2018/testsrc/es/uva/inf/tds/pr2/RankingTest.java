@@ -69,8 +69,8 @@ public class RankingTest {
 		String[] rankingElements = { "top1", "top2", "top3", "top4", "top5", "top6", "top7", "top8", "top9", "top10" };
 		Ranking<String> ranking = new Ranking<>(rankingElements);
 
-		assertTrue(ranking.exists("top1"));
-		assertFalse(ranking.exists("top54"));
+		assertTrue(ranking.existsValue("top1"));
+		assertFalse(ranking.existsValue("top54"));
 	}
 
 	@Test
@@ -82,8 +82,8 @@ public class RankingTest {
 				"top10" };
 		Ranking<String> ranking = new Ranking<>(rankingElements);
 
-		assertTrue(ranking.exists(expectedElement));
-		assertFalse(ranking.exists(notExpectedElement));
+		assertTrue(ranking.existsReference(expectedElement));
+		assertFalse(ranking.existsReference(notExpectedElement));
 	}
 
 	@Test
