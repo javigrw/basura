@@ -98,7 +98,7 @@ public class RankingTest {
 		Ranking<String> rankingBefore = new Ranking<>(dataBefore);
 		Ranking<String> rankingAfter = new Ranking<>(dataAfter);
 
-		assertArrayEquals(expectedResult, rankingAfter.compareWith(dataAfter));
+		assertArrayEquals(expectedResult, rankingAfter.compareWith(rankingBefore));
 
 	}
 }
