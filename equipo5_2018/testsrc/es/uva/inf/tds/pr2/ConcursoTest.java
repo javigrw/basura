@@ -16,5 +16,23 @@ public class ConcursoTest {
 		assertEquals(nominationsLimit, concurso.nominationsLimit);
 		assertEquals((int)(nominationsLimit/3), concurso.votesLimit);
 	}
+	
+	@Test
+	public void testNominate() {
+		String element = "nominatedElement";
+		Concurso<String> concurso = new Concurso<>(3);
+		
+		concurso.nominate(element);
+		
+		assertTrue(concurso.nominations.contains(element));	
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testDupedNominate() {
+		String element = "nominatedElement";
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(element);
+		concurso.nominate(element);
+	}
 
 }
