@@ -57,7 +57,8 @@ public class Ranking<Element> {
 
 	/**
 	 * Returns the position of the element or null if there is no element with that
-	 * values
+	 * values. If there are multiple elements with the same values, the returned one
+	 * is the highest position at the top.
 	 * 
 	 * @param element
 	 * @return position the position of the element at the ranking
