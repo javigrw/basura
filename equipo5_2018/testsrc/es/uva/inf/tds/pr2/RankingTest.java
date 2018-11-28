@@ -15,7 +15,15 @@ public class RankingTest {
 		assertArrayEquals(rankingElements, ranking.top);
 
 	}
-
+	@Test
+	public void testDefaultLittleRanking() {
+		String[] rankingElements = {"top1", "top2", "top3"};
+		Ranking<String> ranking = new Ranking<>(rankingElements);
+		
+		assertNull(ranking.getElementByPosition(4));
+		assertEquals("top3", ranking.getElementByPosition(3));
+	}
+	
 	@Test
 	public void testCustomRanking() {
 		int size = 5;
@@ -24,6 +32,16 @@ public class RankingTest {
 
 		assertNotNull(ranking.top);
 		assertArrayEquals(rankingElements, ranking.top);
+	}
+	
+	@Test
+	public void testCustomLittleRanking() {
+		int size = 5;
+		String[] rankingElements = {"top1","top2","top3"};
+		Ranking<String> ranking = new Ranking<>(rankingElements, size);
+		
+		assertNull(ranking.getElementByPosition(4));
+		assertEquals("top3", ranking.getElementByPosition(3));
 	}
 
 	@Test
