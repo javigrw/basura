@@ -73,6 +73,17 @@ public class RankingTest {
 
 		assertEquals(expectedPosition, position);
 	}
+	
+	@Test
+	public void testSameElementGetPositionFromElementValue() {
+		int expectedPosition = 4;
+		String[] rankingElements = { "top1", "top2", "top3", "top4", "top4", "top6", "top4", "top8", "top9", "top10" };
+		Ranking<String> ranking = new Ranking<>(rankingElements);
+
+		int position = ranking.getPositionFromElementValue("top4");
+
+		assertEquals(expectedPosition, position);
+	}
 
 	@Test
 	public void testGetPositionFromElementReference() {
