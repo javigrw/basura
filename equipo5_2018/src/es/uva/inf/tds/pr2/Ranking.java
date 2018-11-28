@@ -71,7 +71,7 @@ public class Ranking<Element> {
 	/**
 	 * Returns the position of the element
 	 * 
-	 * @param element
+	 * @param element reference, not null
 	 * @return position the position of the element at the ranking
 	 */
 	public int getPositionFromElementReference(Element element) {
