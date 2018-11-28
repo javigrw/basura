@@ -34,5 +34,19 @@ public class ConcursoTest {
 		concurso.nominate(element);
 		concurso.nominate(element);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testFullNominationsNominate() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String element4 = "notAllowedNomination";
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(element);
+		concurso.nominate(element2);
+		concurso.nominate(element3);
+		concurso.nominate(element4);
+	}
+	
 
 }
