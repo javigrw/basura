@@ -90,5 +90,41 @@ public class ConcursoTest {
 		
 		assertEquals((Integer)1,concurso.votes.get(element2));
 	}
-
+	
+	@Test(expected = IllegalStateException.class)
+	public void testNominateAfterCloseVotations() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String[] elements = {element, element2};
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(elements);
+		concurso.closeNominations();
+		concurso.closeVotations();
+		concurso.nominate(element3);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testVoteAfterCloseVotations() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String[] elements = {element, element2,element3};
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(elements);
+		concurso.closeNominations();
+		concurso.closeVotations();
+		concurso.vote(1234, element3);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testCloseVotationsBeforeCloseNominations() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String[] elements = {element, element2,element3};
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(elements);
+		concurso.closeVotations();
+	}
 }
