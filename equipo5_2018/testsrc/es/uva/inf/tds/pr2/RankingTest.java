@@ -56,6 +56,14 @@ public class RankingTest {
 	}
 
 	@Test
+	public void testNullGetElementByPosition() {
+		String[] rankingElements = {"top1", "top2", "top3"};
+		Ranking<String> ranking = new Ranking<>(rankingElements);
+		
+		assertNull(ranking.getElementByPosition(4));
+	}
+	
+	@Test
 	public void testGetPositionFromElementValue() {
 		int expectedPosition = 4;
 		String[] rankingElements = { "top1", "top2", "top3", "top4", "top5", "top6", "top7", "top8", "top9", "top10" };
