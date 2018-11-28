@@ -45,9 +45,9 @@ public class Ranking<Element> {
 
 	/**
 	 * Returns the element at the ranking position desired or null if there is no
-	 * element at that position
+	 * element at that position.
 	 * 
-	 * @param position
+	 * @param position can not be greater than the ranking size
 	 * @return element at the ranking position
 	 */
 	public Element getElementByPosition(int position) {
