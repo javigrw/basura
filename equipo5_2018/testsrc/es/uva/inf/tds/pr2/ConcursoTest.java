@@ -7,8 +7,14 @@ import org.junit.Test;
 public class ConcursoTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testConcurso() {
+		int nominationsLimit = 10;
+		Concurso<String> concurso = new Concurso<>(nominationsLimit);
+		
+		assertNotNull(concurso.nominationsLimit);
+		assertNotNull(concurso.votesLimit);
+		assertEquals(nominationsLimit, concurso.nominationsLimit);
+		assertEquals((int)(nominationsLimit/3), concurso.votesLimit);
 	}
 
 }
