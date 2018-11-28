@@ -37,4 +37,11 @@ public class Concurso<Element> {
 		// TODO Auto-generated method stub
 
 	}
+	/**
+	 * Adds a set of nominated elements to the Concurso.
+	 * @param elements that not exists in the Concurso already
+	 */
+	public void nominate(Element[] elements) {
+		// TODO not implemented yet
+	}
 }
