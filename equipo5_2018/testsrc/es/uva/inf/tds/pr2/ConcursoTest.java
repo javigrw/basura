@@ -48,5 +48,20 @@ public class ConcursoTest {
 		concurso.nominate(element4);
 	}
 	
+	@Test
+	public void testMultiNominate() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String[] elements = {element, element2, element3};
+		Concurso<String> concurso = new Concurso<>(3);
+		
+		concurso.nominate(elements);
+		
+		assertTrue(concurso.nominations.contains(element));
+		assertTrue(concurso.nominations.contains(element2));
+		assertTrue(concurso.nominations.contains(element3));
+	}
+	
 
 }
