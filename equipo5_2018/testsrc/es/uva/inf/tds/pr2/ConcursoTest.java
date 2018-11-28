@@ -76,5 +76,19 @@ public class ConcursoTest {
 		concurso.nominate(element3);
 	}
 	
+	@Test
+	public void testVote() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String[] elements = {element, element2,element3};
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(elements);
+		concurso.closeNominations();
+		
+		concurso.vote(123,element2);
+		
+		assertEquals((Integer)1,concurso.votes.get(element2));
+	}
 
 }
