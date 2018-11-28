@@ -61,10 +61,21 @@ public class Concurso<Element> {
 	/**
 	 * Votes an element as a user.
 	 * 
-	 * @param identifier a user that didn't vote yet
-	 * @param element a nominated element of this Concurso
+	 * @param identifier
+	 *            a user that didn't vote yet
+	 * @param element
+	 *            a nominated element of this Concurso
 	 */
 	public void vote(int identifier, Element element) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * Close the votations phase.Nominations phase has to be ended first. Can not
+	 * return from this state.
+	 */
+	public void closeVotations() {
 		// TODO Auto-generated method stub
 
 	}
