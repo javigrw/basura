@@ -1,5 +1,6 @@
 package es.uva.inf.tds.pr2;
 
+import java.util.Hashtable;
 import java.util.Set;
 
 /**
@@ -15,6 +16,7 @@ public class Concurso<Element> {
 	protected int nominationsLimit;
 	protected int votesLimit;
 	protected Set<Element> nominations;
+	protected Hashtable<Element, Integer> votes;
 
 	/**
 	 * Creates a new Concurso with a top limit of nominated elements and a botton
@@ -52,6 +54,17 @@ public class Concurso<Element> {
 	 * Close the nominations phase, and votes phase starts.
 	 */
 	public void closeNominations() {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * Votes an element as a user.
+	 * 
+	 * @param identifier a user that didn't vote yet
+	 * @param element a nominated element of this Concurso
+	 */
+	public void vote(int identifier, Element element) {
 		// TODO Auto-generated method stub
 
 	}
