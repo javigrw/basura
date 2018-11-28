@@ -31,8 +31,8 @@ public class Ranking<Element> {
 	}
 
 	/**
-	 * Returns the element at the ranking position desired or null if there is no element
-	 * at that position
+	 * Returns the element at the ranking position desired or null if there is no
+	 * element at that position
 	 * 
 	 * @param position
 	 * @return element at the ranking position
@@ -88,8 +88,9 @@ public class Ranking<Element> {
 
 	/**
 	 * Returns an array that shows gained or lost positions regarding another
-	 * ranking rankings. E.g(target {A,B,C,D} This {C,A,B,D} Differences {2,-1,-1,0}
-	 * )
+	 * ranking rankings. If an element leaves the ranking and is not replaced, the
+	 * differences in positions is 0 E.g(target {A,B,C,D} This {C,A,B,D} Differences
+	 * {2,-1,-1,0} )
 	 * 
 	 * @param targetRanking
 	 * @return array that shows gained or lost positions between two rankings
