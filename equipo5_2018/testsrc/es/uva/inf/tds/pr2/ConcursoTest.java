@@ -63,5 +63,18 @@ public class ConcursoTest {
 		assertTrue(concurso.nominations.contains(element3));
 	}
 	
+	@Test(expected = IllegalStateException.class)
+	public void testCloseNominations() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String[] elements = {element, element2};
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(elements);
+		
+		concurso.closeNominations();
+		concurso.nominate(element3);
+	}
+	
 
 }
