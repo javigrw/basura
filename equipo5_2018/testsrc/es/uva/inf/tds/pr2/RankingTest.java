@@ -109,7 +109,15 @@ public class RankingTest {
 		assertSame(expectedElement, element);
 		assertEquals(expectedPosition, position);
 	}
-
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testNullReferenceGetPositionFromElementReference() {
+		String[] rankingElements = { "top1", "top2", "top3", "top4", "top4", "top6", "top4", "top8", "top9", "top10" };
+		Ranking<String> ranking = new Ranking<>(rankingElements);
+		
+		ranking.getPositionFromElementReference(null);
+	}
+	
 	@Test
 	public void testExistsElementValue() {
 
