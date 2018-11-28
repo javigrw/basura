@@ -72,6 +72,7 @@ public class RankingTest {
 		int position = ranking.getPositionFromElementValue("top4");
 
 		assertEquals(expectedPosition, position);
+		assertNull(ranking.getPositionFromElementValue("notExistent"));
 	}
 	
 	@Test
