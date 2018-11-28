@@ -31,7 +31,8 @@ public class Ranking<Element> {
 	}
 
 	/**
-	 * Returns the element at the ranking position desired
+	 * Returns the element at the ranking position desired or null if there is no element
+	 * at that position
 	 * 
 	 * @param position
 	 * @return element at the ranking position
