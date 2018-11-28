@@ -1,8 +1,17 @@
 package es.uva.inf.tds.pr2;
 
+/**
+ * Ranking of ordered elements of the same type. Default ranking is a top 10. El
+ * ranking no podrá ser modificado una vez creado.
+ * 
+ * @author raumedi
+ *
+ * @param <Element>
+ *            Elements of the ranking
+ */
 public class Ranking<Element> {
 
-	protected Element[] top;
+	protected final Element[] top;
 
 	/**
 	 * Creates a top 10 ranking from an array of elements. The order in the array
@@ -14,7 +23,8 @@ public class Ranking<Element> {
 	 *            array with size of 10
 	 */
 	public Ranking(Element[] rankData) {
-		// TODO not implemented yet
+		// TODO not implemented yet FAKE IMPL
+		top = null;
 	}
 
 	/**
@@ -30,6 +40,7 @@ public class Ranking<Element> {
 	 */
 	public Ranking(Element[] rankData, int topSize) {
 		// TODO not implemented yet
+		top = null;
 	}
 
 	/**
