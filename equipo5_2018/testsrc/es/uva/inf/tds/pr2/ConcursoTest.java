@@ -136,13 +136,13 @@ public class ConcursoTest {
 		String[] elements = { element, element2, element3 };
 		Concurso<String> concurso = new Concurso<>(3);
 		concurso.nominate(elements);
+		concurso.closeNominations();
 		concurso.vote(123, element);
 		concurso.vote(323, element);
 		concurso.vote(133, element);
 		concurso.vote(222, element2);
 		concurso.vote(221, element2);
-		concurso.vote(666, element3);
-		concurso.closeNominations();
+		concurso.vote(666, element3);		
 		concurso.closeVotations();
 		Ranking<String> ranking = concurso.getRanking();
 
