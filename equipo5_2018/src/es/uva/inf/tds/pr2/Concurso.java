@@ -91,4 +91,17 @@ public class Concurso<Element> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+	 * Return a ranking of nominated elements, the ranking contains as much elements
+	 * as its size. First position will be for the element with more votes.
+	 * Nominations phase has to be ended first.
+	 * 
+	 * @param rankingSize size of the ranking
+	 * @return ranking with elements of this Concurso.
+	 */
+	public Ranking<Element> getRanking(int rankingSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
