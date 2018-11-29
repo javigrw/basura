@@ -79,4 +79,15 @@ public class Concurso<Element> {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+	 * Return a ranking of nominated elements, all the elements appears in the
+	 * ranking. First position will be for the element with more votes.
+	 * 
+	 * @return ranking with all the elements of this Concurso.
+	 */
+	public Ranking<Element> getRanking() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
