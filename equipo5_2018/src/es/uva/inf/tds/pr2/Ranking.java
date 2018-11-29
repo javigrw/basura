@@ -51,8 +51,8 @@ public class Ranking<Element> {
 	 * @return element at the ranking position
 	 */
 	public Element getElementByPosition(int position) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub FAKE IMPLEMENTATION
+		return (Element)"fake";
 	}
 
 	/**
