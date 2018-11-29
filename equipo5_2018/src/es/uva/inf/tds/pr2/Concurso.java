@@ -6,7 +6,7 @@ import java.util.Set;
 
 /**
  * Concurso of elements of the same type. There is a bottom limit of votes and
- * nominations, so is a top limit of nominated elements. Bottom limit is 1/3 of
+ * nominations, so there is a top limit of nominated elements. Bottom limit must be at least 1/3 of
  * top limit.
  * 
  * @author raumedi
@@ -14,13 +14,16 @@ import java.util.Set;
  * @param <Element>
  */
 public class Concurso<Element> {
+	
+	protected boolean closedNominations;
+	protected boolean closedVotations;
 	protected int nominationsLimit;
 	protected int votesLimit;
 	protected Set<Element> nominations;
 	protected Hashtable<Element, Integer> votes;
 
 	/**
-	 * Creates a new Concurso with a top limit of nominated elements and a botton
+	 * Creates a new Concurso with an upper limit of nominated elements and a botton
 	 * limit of elements needed to close a nomination phase and voting phase.
 	 * 
 	 * @param nominationsLimit
@@ -48,6 +51,7 @@ public class Concurso<Element> {
 	 * 
 	 * @param elements
 	 *            that not exists in the Concurso already
+	 * 
 	 */
 	public void nominate(Element[] elements) {
 		// TODO not implemented yet
@@ -89,6 +93,7 @@ public class Concurso<Element> {
 	 * phase has to be ended first.
 	 * 
 	 * @return ranking with all the elements of this Concurso.
+	 * @throws IllegalStateException if votations or nominations are open.
 	 */
 	public Ranking<Element> getRanking() {
 		// TODO Auto-generated method stub FAKE IMPLEMENTATION
@@ -103,6 +108,7 @@ public class Concurso<Element> {
 	 * 
 	 * @param rankingSize size of the ranking
 	 * @return ranking with elements of this Concurso.
+	 * @throws IllegalStateException if votations or nominations are open.
 	 */
 	public Ranking<Element> getRanking(int rankingSize) {
 		// TODO Auto-generated method stub FAKE IMPLEMENTATION
