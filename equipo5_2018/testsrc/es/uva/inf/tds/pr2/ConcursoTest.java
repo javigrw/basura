@@ -178,4 +178,58 @@ public class ConcursoTest {
 		concurso.vote(666, element3);
 		Ranking<String> ranking = concurso.getRanking();
 	}
+	
+	@Test
+	public void testGetCustomRanking() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String element4 = "notInTheCustomRanking";
+		String[] elements = { element, element2, element3, element4 };
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(elements);
+		concurso.closeNominations();
+		concurso.vote(123, element);
+		concurso.vote(323, element);
+		concurso.vote(133, element);
+		concurso.vote(222, element2);
+		concurso.vote(221, element2);
+		concurso.vote(666, element3);		
+		concurso.closeVotations();
+		Ranking<String> ranking = concurso.getRanking(3);
+
+		String[] expectedTop = { element, element2, element3 };
+		assertArrayEquals(expectedTop, ranking.top);
+	}
+	
+	@Test
+	public void testGetCustomRankingBeforeNominations() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String element4 = "notInTheCustomRanking";
+		String[] elements = { element, element2, element3, element4 };
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(elements);
+		Ranking<String> ranking = concurso.getRanking(3);
+	}
+	
+	@Test
+	public void testGetCustomRankingBeforeVotations() {
+		String element = "nominatedElement";
+		String element2 = "anotherNomination";
+		String element3 = "finalNomination";
+		String element4 = "notInTheCustomRanking";
+		String[] elements = { element, element2, element3, element4 };
+		Concurso<String> concurso = new Concurso<>(3);
+		concurso.nominate(elements);
+		concurso.closeNominations();
+		concurso.vote(123, element);
+		concurso.vote(323, element);
+		concurso.vote(133, element);
+		concurso.vote(222, element2);
+		concurso.vote(221, element2);
+		concurso.vote(666, element3);
+		Ranking<String> ranking = concurso.getRanking(3);
+	}
 }
