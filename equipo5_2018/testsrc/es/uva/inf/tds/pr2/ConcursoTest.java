@@ -186,7 +186,7 @@ public class ConcursoTest {
 		String element3 = "finalNomination";
 		String element4 = "notInTheCustomRanking";
 		String[] elements = { element, element2, element3, element4 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(4);
 		concurso.nominate(elements);
 		concurso.closeNominations();
 		concurso.vote(123, element);
@@ -202,19 +202,20 @@ public class ConcursoTest {
 		assertArrayEquals(expectedTop, ranking.top);
 	}
 	
-	@Test
+	@Test(expected = IllegalStateException.class)
 	public void testGetCustomRankingBeforeNominations() {
 		String element = "nominatedElement";
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
-		String element4 = "notInTheCustomRanking";
-		String[] elements = { element, element2, element3, element4 };
+		String[] elements = { element, element2, element3};
 		Concurso<String> concurso = new Concurso<>(3);
 		concurso.nominate(elements);
 		Ranking<String> ranking = concurso.getRanking(3);
+		
+		
 	}
 	
-	@Test
+	@Test(expected = IllegalStateException.class)
 	public void testGetCustomRankingBeforeVotations() {
 		String element = "nominatedElement";
 		String element2 = "anotherNomination";
