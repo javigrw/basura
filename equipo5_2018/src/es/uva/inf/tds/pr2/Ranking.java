@@ -24,7 +24,7 @@ public class Ranking<Element> {
 	 */
 	public Ranking(Element[] rankData) {
 		// TODO not implemented yet FAKE IMPLEMENTATION
-		top = rankData;
+		top = null;
 	}
 
 	/**
