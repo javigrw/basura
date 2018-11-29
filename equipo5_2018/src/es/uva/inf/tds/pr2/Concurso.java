@@ -1,5 +1,6 @@
 package es.uva.inf.tds.pr2;
 
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 
@@ -25,7 +26,9 @@ public class Concurso<Element> {
 	 * @param nominationsLimit
 	 */
 	public Concurso(int nominationsLimit) {
-		// TODO not implemented yet
+		// TODO not implemented yet FAKE IMPLEMENTATION
+		votes = new Hashtable<>();
+		nominations = new HashSet<>();
 	}
 
 	/**
@@ -88,8 +91,9 @@ public class Concurso<Element> {
 	 * @return ranking with all the elements of this Concurso.
 	 */
 	public Ranking<Element> getRanking() {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub FAKE IMPLEMENTATION
+		String [] fakeElements = {"","","","","","","","","",""};
+		return new Ranking(fakeElements);
 	}
 
 	/**
@@ -101,7 +105,8 @@ public class Concurso<Element> {
 	 * @return ranking with elements of this Concurso.
 	 */
 	public Ranking<Element> getRanking(int rankingSize) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub FAKE IMPLEMENTATION
+		String [] fakeElements = {"","","","","","","","","",""};
+		return new Ranking(fakeElements);
 	}
 }

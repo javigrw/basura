@@ -23,8 +23,8 @@ public class Ranking<Element> {
 	 *            array with size of 10
 	 */
 	public Ranking(Element[] rankData) {
-		// TODO not implemented yet FAKE IMPL
-		top = null;
+		// TODO not implemented yet FAKE IMPLEMENTATION
+		top = rankData;
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class Ranking<Element> {
 	 *            can be equal or bigger than rankData size
 	 */
 	public Ranking(Element[] rankData, int topSize) {
-		// TODO not implemented yet
+		// TODO not implemented yet FAKE IMPLEMENTATION
 		top = null;
 	}
 
