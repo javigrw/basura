@@ -82,7 +82,8 @@ public class Concurso<Element> {
 
 	/**
 	 * Return a ranking of nominated elements, all the elements appears in the
-	 * ranking. First position will be for the element with more votes.
+	 * ranking. First position will be for the element with more votes. Nominations
+	 * phase has to be ended first.
 	 * 
 	 * @return ranking with all the elements of this Concurso.
 	 */
