@@ -68,8 +68,8 @@ public class Ranking<Element> {
 	 * @return position the position of the element at the ranking
 	 */
 	public int getPositionFromElementValue(Element element) {
-		// TODO Auto-generated method stub
-		return 0;
+		// TODO Auto-generated method stub FAKE IMPL
+		return -1;
 	}
 
 	/**
@@ -81,8 +81,8 @@ public class Ranking<Element> {
 	 * @return position the position of the element at the ranking
 	 */
 	public int getPositionFromElementReference(Element element) {
-		// TODO Auto-generated method stub
-		return 0;
+		// TODO Auto-generated method stub FAKE IMPL
+		return -1;
 	}
 
 	/**
