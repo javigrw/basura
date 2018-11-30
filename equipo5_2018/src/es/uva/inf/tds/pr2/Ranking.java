@@ -73,7 +73,8 @@ public class Ranking<Element> {
 	}
 
 	/**
-	 * Returns the position of the element
+	 * Returns the position of the element or zero if that element is not in the
+	 * ranking.
 	 * 
 	 * @param element
 	 *            reference, not null
