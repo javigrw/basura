@@ -47,12 +47,16 @@ public class Ranking<Element> {
 	 * Returns the element at the ranking position desired or null if there is no
 	 * element at that position.
 	 * 
-	 * @param position can not be greater than the ranking size
+	 * @param position
+	 *            can not be greater than the ranking size
 	 * @return element at the ranking position
+	 * @throws IndexOutOfBounds
+	 *             if the position is not in the range <code>1</code> to
+	 *             <code>top.length()</code>
 	 */
 	public Element getElementByPosition(int position) {
 		// TODO Auto-generated method stub FAKE IMPLEMENTATION
-		return (Element)"fake";
+		return (Element) "fake";
 	}
 
 	/**
@@ -71,7 +75,8 @@ public class Ranking<Element> {
 	/**
 	 * Returns the position of the element
 	 * 
-	 * @param element reference, not null
+	 * @param element
+	 *            reference, not null
 	 * @return position the position of the element at the ranking
 	 */
 	public int getPositionFromElementReference(Element element) {
