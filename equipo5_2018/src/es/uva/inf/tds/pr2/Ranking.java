@@ -56,7 +56,7 @@ public class Ranking<Element> {
 	}
 
 	/**
-	 * Returns the position of the element or null if there is no element with that
+	 * Returns the position of the element or zero if there is no element with that
 	 * values. If there are multiple elements with the same values, the returned one
 	 * is the highest position at the top.
 	 * 
