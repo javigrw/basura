@@ -36,7 +36,7 @@ public class Concurso<Element> {
 
 	/**
 	 * Adds a new nominated element to the Concurso. You cannot nominate new
-	 * elements after the nominations limit has been reached.
+	 * elements after the nominations limit heen reached.
 	 * 
 	 * @param element
 	 *            that not exists in the Concurso already
