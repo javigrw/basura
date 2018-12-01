@@ -4,6 +4,7 @@ package es.uva.inf.tds.pr2;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +39,7 @@ public class BlackBoxContest {
 		contest.nominate(elements);
 	}
 	
+	@Test
 	public void testNominateElements() {
 		Concurso<String> contest = new Concurso<>(10);
 		String[] elements = {"top1","top2","top3","top4"};
@@ -51,9 +53,10 @@ public class BlackBoxContest {
 		contest.nominate(element);
 	}
 	
+	@Test
 	public void testNominateElement() {
 		Concurso<String> contest = new Concurso<>(10);
-		String[] element = {"top1","top2","top3","top4"};
+		String element = "top";
 		contest.nominate(element);
 		
 	}
@@ -77,8 +80,33 @@ public class BlackBoxContest {
 	@Test
 	public void testCloseNominations() {
 		Concurso<String> contest = new Concurso<>(10);
-		contest
+		contest.closeNominations();
+		assertTrue(contest.closedNominations);
 	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testNominateElementAfterClosedNominations() {
+		Concurso<String> contest = new Concurso<>(10);
+		String element = "top";
+		contest.nominate(element);
+		
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testNominateElementsAfterClosedNominations() {
+		Concurso<String> contest = new Concurso<>(10);
+		String[] element = {"top1","top2","top3","top4"};
+		contest.nominate(element);
+		
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testCloseNominationsAlreadyClosed() {
+		Concurso<String> contest = new Concurso<>(10);
+		contest.closeNominations();
+		contest.closeNominations();
+	}
+	
 	
 	
 	
