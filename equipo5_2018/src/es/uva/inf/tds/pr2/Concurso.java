@@ -5,11 +5,10 @@ import java.util.Hashtable;
 import java.util.Set;
 
 /**
- * Concurso of elements of the same type. There is a bottom limit of votes and
- * nominations, so there is a top limit of nominated elements. Bottom limit must be at least 1/3 of
- * top limit.
+ * Concurso of elements of the same type. Nominations have a fixed top limit
  * 
  * @author raumedi
+ * @author javguti
  *
  * @param <Element>
  */
@@ -18,7 +17,8 @@ public class Concurso<Element> {
 	protected boolean closedNominations;
 	protected boolean closedVotations;
 	protected int nominationsLimit;
-	protected int votesLimit;
+	protected int nominationsBottomLimit;
+	protected int votesBottomLimit;
 	protected Set<Element> nominations;
 	protected Hashtable<Element, Integer> votes;
 
@@ -27,8 +27,11 @@ public class Concurso<Element> {
 	 * limit of elements needed to close a nomination phase and voting phase.
 	 * 
 	 * @param nominationsLimit
+	 * @throws IllegalArgumentException if {@code nominationsLimit < nominationsBottomLimit}
+	 * @throws IllegalArgumentException if {@code votesBottomLimit <= 1}
+	 * @throws IllegalArgumentException if {@code nominationsBottomLimit <= 1}
 	 */
-	public Concurso(int nominationsLimit) {
+	public Concurso(int nominationsLimit, int nominationsBottomLimit, int votesBottomLimit) {
 		// TODO not implemented yet FAKE IMPLEMENTATION
 		votes = new Hashtable<>();
 		nominations = new HashSet<>();
@@ -36,10 +39,12 @@ public class Concurso<Element> {
 
 	/**
 	 * Adds a new nominated element to the Concurso. You cannot nominate new
-	 * elements after the nominations limit has been reached.
+	 * elements after the nominations limit heen reached.
 	 * 
 	 * @param element
 	 *            that not exists in the Concurso already
+	 * @throws IllegalArgumentException if element is already nominated or element is null
+	 * @throws IllegalStateException if nominations are closed
 	 */
 	public void nominate(Element element) {
 		// TODO Auto-generated method stub
@@ -51,7 +56,8 @@ public class Concurso<Element> {
 	 * 
 	 * @param elements
 	 *            that not exists in the Concurso already
-	 * 
+	 * @throws IllegalArgumentException if any element of elements is already nominated or is null
+	 * @throws IllegalStateException if nominations are closed
 	 */
 	public void nominate(Element[] elements) {
 		// TODO not implemented yet
@@ -59,6 +65,10 @@ public class Concurso<Element> {
 
 	/**
 	 * Close the nominations phase, and votes phase starts.
+	 * 
+	 * @throws IllegalStateException if minimum of nominated elements is not reached
+	 * @throws IllegalStateException if nomination are already closed
+	 * 
 	 */
 	public void closeNominations() {
 		// TODO Auto-generated method stub
@@ -72,6 +82,11 @@ public class Concurso<Element> {
 	 *            a user that didn't vote yet
 	 * @param element
 	 *            a nominated element of this Concurso
+	 * @throws IllegalArgumentException if identifier is less than zero or null
+	 * @throws IllegalArgumentException if element is null
+	 * @throws IllegalStateException if nominations are open
+	 * @throws IllegalStateException if votations are closed
+	 * @throws IllegalStateException if identifier has already voted
 	 */
 	public void vote(int identifier, Element element) {
 		// TODO Auto-generated method stub
@@ -81,6 +96,9 @@ public class Concurso<Element> {
 	/**
 	 * Close the votations phase.Nominations phase has to be ended first. Can not
 	 * return from this state.
+	 * 
+	 * @throws IllegalStateException if minimum number of votes is not reached
+	 * @throws IllegalStateException if votations are already closed
 	 */
 	public void closeVotations() {
 		// TODO Auto-generated method stub

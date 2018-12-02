@@ -5,6 +5,7 @@ package es.uva.inf.tds.pr2;
  * ranking no podrá ser modificado una vez creado.
  * 
  * @author raumedi
+ * @author javguti
  *
  * @param <Element>
  *            Elements of the ranking
