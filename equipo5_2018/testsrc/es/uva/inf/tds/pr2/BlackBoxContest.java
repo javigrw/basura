@@ -1,7 +1,7 @@
 package es.uva.inf.tds.pr2;
 
 
-import static org.junit.Assert.assertArrayEquals;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -24,19 +24,82 @@ public class BlackBoxContest {
 		String[] initializer = { "top1", "top2", "top3", "top4" };
 		elements = initializer;
 		element = "top";
-		contest = new Concurso<>(10);
+		contest = new Concurso<>(10,3,5);
 	}
 
 	
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testInitNominationsLimitLessThanZero() {
-		Concurso<String> contest = new Concurso<>(-1);
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(-1,5,5);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testInitNominationsLimitZero() {
-		Concurso<String> contest = new Concurso<>(0);
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(0,5,5);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInitNominationsLimitOne() {
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(1,5,5);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInitVotesLimitLessThanZero() {
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(5,2,-1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInitVotesLimitZero() {
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(5,2,0);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInitVotesLimitOne() {
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(5,2,1);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInitNominationsBottomLimitLessThanZero() {
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(5,-1,5);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInitNominationsBottomLimitZero() {
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(5,0,5);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInitNominationsBottomLimitOne() {
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(5,1,5);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testInitNominationsLimitLessThanBottomLimit() {
+		@SuppressWarnings("unused")
+		Concurso<String> contest = new Concurso<>(3,4,5);
+	}
+	
+	
+	
+	@Test
+	public void testInitLimitEqualsBottom () {
+		Concurso<String> contest = new Concurso<>(5,5,5);
+		assertNotNull(contest);
+		assertEquals(5, contest.nominationsLimit);
+		assertFalse(contest.closedVotations);
+		assertFalse(contest.closedNominations);
+		assertEquals(5, contest.votesBottomLimit);
+		assertEquals(5, contest.nominationsBottomLimit);
 	}
 	
 	@Test
@@ -45,6 +108,8 @@ public class BlackBoxContest {
 		assertEquals(10, contest.nominationsLimit);
 		assertFalse(contest.closedVotations);
 		assertFalse(contest.closedNominations);
+		assertEquals(5, contest.votesBottomLimit);
+		assertEquals(5, contest.nominationsBottomLimit);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -73,6 +138,24 @@ public class BlackBoxContest {
 		assertEquals(1, contest.nominations.size());
 		contest.nominate(element);
 		assertTrue(contest.nominations.contains(element));
+		
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testCloseNominationsUnderMinimum() {
+		assertEquals(1, contest.nominations.size());
+		contest.nominate(element);
+		contest.nominate("basura");
+		contest.closeNominations();
+		
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testCloseNominateElementAlreadyFull() {
+		Concurso<String> contest = new Concurso<>(4,3,5);
+		assertEquals(1, contest.nominations.size());
+		contest.nominate(elements);
+		contest.nominate("basura");
 		
 	}
 	
@@ -130,6 +213,7 @@ public class BlackBoxContest {
 		contest.vote(1, "top");
 	}
 	
+	@SuppressWarnings("null")
 	@Test(expected = IllegalArgumentException.class)
 	public void testVoteNullIdentifier() {
 		contest.nominate(elements);
@@ -159,6 +243,53 @@ public class BlackBoxContest {
 		assertEquals((int)1, (int)contest.votes.get("top3"));
 	}
 	
+	@Test
+	public void testCloseVotations() {
+		contest.nominate(elements);
+		contest.closeNominations();
+		contest.vote(1, "top3");
+		contest.vote(2, "top3");
+		contest.vote(3, "top3");
+		contest.vote(4, "top3");
+		contest.vote(5, "top3");
+		assertEquals((int)5, (int)contest.votes.get("top3"));
+		contest.closeVotations();
+		assertTrue(contest.closedVotations);
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testVoteSameId() {
+		contest.nominate(elements);
+		contest.closeNominations();
+		contest.vote(1, "top3");
+		contest.vote(1, "top3");
+	}
+	
+	@Test(expected = IllegalStateException.class)
+	public void testCloseVotationsWithoutMinimum() {
+		contest.nominate(elements);
+		contest.closeNominations();
+		contest.vote(1, "top3");
+		contest.vote(2, "top3");
+		contest.vote(3, "top3");
+		contest.vote(4, "top3");
+		assertEquals((int)4, (int)contest.votes.get("top3"));
+		contest.closeVotations();
+	}
+	
+	
+	@Test(expected = IllegalStateException.class)
+	public void testCloseVotationsAlreadyClosed() {
+		contest.nominate(elements);
+		contest.closeNominations();
+		contest.vote(1, "top3");
+		contest.vote(2, "top3");
+		contest.vote(3, "top3");
+		contest.vote(4, "top3");
+		contest.vote(5, "top3");
+		contest.closeVotations();
+		contest.closeVotations();
+	}
 	
 	
 	

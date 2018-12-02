@@ -12,18 +12,19 @@ public class ConcursoTest {
 	@Test
 	public void testConcurso() {
 		int nominationsLimit = 10;
-		Concurso<String> concurso = new Concurso<>(nominationsLimit);
+		int votesBottomLimit = 5;
+		int nominationsBottomLimit = 5;
+		Concurso<String> concurso = new Concurso<>(nominationsLimit,nominationsBottomLimit,votesBottomLimit);
 
 		assertNotNull(concurso.nominationsLimit);
-		assertNotNull(concurso.votesLimit);
+		assertNotNull(concurso.votesBottomLimit);
 		assertEquals(nominationsLimit, concurso.nominationsLimit);
-		assertEquals((int) (nominationsLimit / 3), concurso.votesLimit);
 	}
 
 	@Test
 	public void testNominate() {
 		String element = "nominatedElement";
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 
 		concurso.nominate(element);
 
@@ -33,7 +34,7 @@ public class ConcursoTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testDupedNominate() {
 		String element = "nominatedElement";
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(element);
 		concurso.nominate(element);
 	}
@@ -44,7 +45,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String element4 = "notAllowedNomination";
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(element);
 		concurso.nominate(element2);
 		concurso.nominate(element3);
@@ -57,7 +58,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2, element3 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 
 		concurso.nominate(elements);
 
@@ -72,7 +73,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 
 		concurso.closeNominations();
@@ -85,7 +86,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2, element3 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 		concurso.closeNominations();
 
@@ -100,7 +101,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 		concurso.closeNominations();
 		concurso.closeVotations();
@@ -113,7 +114,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2, element3 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 		concurso.closeNominations();
 		concurso.closeVotations();
@@ -126,7 +127,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2, element3 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 		concurso.closeVotations();
 	}
@@ -137,7 +138,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2, element3 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 		concurso.closeNominations();
 		concurso.vote(123, element);
@@ -159,7 +160,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2, element3 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 		Ranking<String> ranking = concurso.getRanking();
 	}
@@ -170,7 +171,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2, element3 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 		concurso.closeNominations();
 		concurso.vote(123, element);
@@ -189,7 +190,7 @@ public class ConcursoTest {
 		String element3 = "finalNomination";
 		String element4 = "notInTheCustomRanking";
 		String[] elements = { element, element2, element3, element4 };
-		Concurso<String> concurso = new Concurso<>(4);
+		Concurso<String> concurso = new Concurso<>(4,2,5);
 		concurso.nominate(elements);
 		concurso.closeNominations();
 		concurso.vote(123, element);
@@ -211,7 +212,7 @@ public class ConcursoTest {
 		String element2 = "anotherNomination";
 		String element3 = "finalNomination";
 		String[] elements = { element, element2, element3};
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 		Ranking<String> ranking = concurso.getRanking(3);
 		
@@ -225,7 +226,7 @@ public class ConcursoTest {
 		String element3 = "finalNomination";
 		String element4 = "notInTheCustomRanking";
 		String[] elements = { element, element2, element3, element4 };
-		Concurso<String> concurso = new Concurso<>(3);
+		Concurso<String> concurso = new Concurso<>(3,2,5);
 		concurso.nominate(elements);
 		concurso.closeNominations();
 		concurso.vote(123, element);
