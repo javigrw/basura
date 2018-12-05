@@ -143,7 +143,6 @@ public class BlackBoxContestWithWrappers {
 	
 	@Test(expected = IllegalStateException.class)
 	public void testCloseNominationsUnderMinimum() {
-		assertEquals(1, contest.nominations.size());
 		contest.nominate(element);
 		contest.nominate(0);
 		contest.closeNominations();
@@ -153,7 +152,6 @@ public class BlackBoxContestWithWrappers {
 	@Test(expected = IllegalStateException.class)
 	public void testCloseNominateElementAlreadyFull() {
 		Concurso<Integer> contest = new Concurso<>(4,3,5);
-		assertEquals(1, contest.nominations.size());
 		contest.nominate(elements);
 		contest.nominate(0);
 		
@@ -213,13 +211,7 @@ public class BlackBoxContestWithWrappers {
 		contest.vote(1, 7);
 	}
 	
-	@SuppressWarnings("null")
-	@Test(expected = IllegalArgumentException.class)
-	public void testVoteNullIdentifier() {
-		contest.nominate(elements);
-		contest.closeNominations();
-		contest.vote((Integer) null, 4);
-	}
+	
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testVoteNullElement() {
@@ -228,34 +220,16 @@ public class BlackBoxContestWithWrappers {
 		contest.vote(2, null);
 	}
 	
-	@Test
-	public void testVote() {
-		contest.nominate(elements);
-		contest.closeNominations();
-		contest.vote(1, 3);
-		assertEquals((int)1, (int)contest.votes.get(3));
-	}
+
 	
 	@Test(expected = IllegalStateException.class)
 	public void testVoteWithNominationsOpen() {
 		contest.nominate(elements);	
 		contest.vote(1, 3);
-		assertEquals((int)1, (int)contest.votes.get(3));
+		
 	}
 	
-	@Test
-	public void testCloseVotations() {
-		contest.nominate(elements);
-		contest.closeNominations();
-		contest.vote(1, 3);
-		contest.vote(2, 3);
-		contest.vote(3, 3);
-		contest.vote(4, 3);
-		contest.vote(5, 3);
-		assertEquals((int)5, (int)contest.votes.get(3));
-		contest.closeVotations();
-		assertTrue(contest.closedVotations);
-	}
+
 	
 	@Test(expected = IllegalStateException.class)
 	public void testVoteSameId() {
@@ -273,7 +247,6 @@ public class BlackBoxContestWithWrappers {
 		contest.vote(2, 3);
 		contest.vote(3, 3);
 		contest.vote(4, 3);
-		assertEquals((int)4, (int)contest.votes.get(3));
 		contest.closeVotations();
 	}
 	

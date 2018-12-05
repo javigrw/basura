@@ -10,6 +10,8 @@ public class ConcursoTestDeSecuencia {
 		
 		contest.nominate(topos);
 		
+		contest.closeNominations();
+		
 		for(int i = 1; i<101; i++) {
 			contest.vote(i, "raulillo");
 			
