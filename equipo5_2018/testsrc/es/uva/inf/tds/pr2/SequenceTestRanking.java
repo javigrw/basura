@@ -18,7 +18,7 @@ public class SequenceTestRanking {
 		Ranking<String> rank = new Ranking<>(topos, 3);
 		
 		assertNotNull(rank);
-		assertEquals(3,rank.top.length);
+		
 		for(String topo : topos) {
 			assertTrue(rank.existsValue(topo));
 		}
