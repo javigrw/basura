@@ -135,15 +135,14 @@ public class BlackBoxContest {
 	
 	@Test
 	public void testNominateElement() {
-		assertEquals(1, contest.nominations.size());
 		contest.nominate(element);
+		assertEquals(1, contest.nominations.size());
 		assertTrue(contest.nominations.contains(element));
 		
 	}
 	
 	@Test(expected = IllegalStateException.class)
 	public void testCloseNominationsUnderMinimum() {
-		assertEquals(1, contest.nominations.size());
 		contest.nominate(element);
 		contest.nominate("basura");
 		contest.closeNominations();
@@ -153,7 +152,6 @@ public class BlackBoxContest {
 	@Test(expected = IllegalStateException.class)
 	public void testCloseNominateElementAlreadyFull() {
 		Concurso<String> contest = new Concurso<>(4,3,5);
-		assertEquals(1, contest.nominations.size());
 		contest.nominate(elements);
 		contest.nominate("basura");
 		
@@ -213,13 +211,6 @@ public class BlackBoxContest {
 		contest.vote(1, "top");
 	}
 	
-	@SuppressWarnings("null")
-	@Test(expected = IllegalArgumentException.class)
-	public void testVoteNullIdentifier() {
-		contest.nominate(elements);
-		contest.closeNominations();
-		contest.vote((Integer) null, "top4");
-	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testVoteNullElement() {
@@ -228,34 +219,15 @@ public class BlackBoxContest {
 		contest.vote(2, null);
 	}
 	
-	@Test
-	public void testVote() {
-		contest.nominate(elements);
-		contest.closeNominations();
-		contest.vote(1, "top3");
-		assertEquals((int)1, (int)contest.votes.get("top3"));
-	}
+	
 	
 	@Test(expected = IllegalStateException.class)
 	public void testVoteWithNominationsOpen() {
 		contest.nominate(elements);	
 		contest.vote(1, "top3");
-		assertEquals((int)1, (int)contest.votes.get("top3"));
 	}
 	
-	@Test
-	public void testCloseVotations() {
-		contest.nominate(elements);
-		contest.closeNominations();
-		contest.vote(1, "top3");
-		contest.vote(2, "top3");
-		contest.vote(3, "top3");
-		contest.vote(4, "top3");
-		contest.vote(5, "top3");
-		assertEquals((int)5, (int)contest.votes.get("top3"));
-		contest.closeVotations();
-		assertTrue(contest.closedVotations);
-	}
+
 	
 	@Test(expected = IllegalStateException.class)
 	public void testVoteSameId() {
@@ -273,7 +245,6 @@ public class BlackBoxContest {
 		contest.vote(2, "top3");
 		contest.vote(3, "top3");
 		contest.vote(4, "top3");
-		assertEquals((int)4, (int)contest.votes.get("top3"));
 		contest.closeVotations();
 	}
 	
