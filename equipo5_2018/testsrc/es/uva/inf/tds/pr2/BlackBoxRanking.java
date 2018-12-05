@@ -41,7 +41,7 @@ public class BlackBoxRanking {
 		Ranking<String> ranking = new Ranking<>(elements);
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testRankingDefaultNull() {
 		@SuppressWarnings("unused")
 		Ranking<String> ranking = new Ranking<>(null);
@@ -68,7 +68,7 @@ public class BlackBoxRanking {
 		Ranking<String> ranking = new Ranking<>(elements, 3);
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testRankingCustomNull() {
 		@SuppressWarnings("unused")
 		Ranking<String> ranking = new Ranking<>(null, 7);
@@ -92,7 +92,7 @@ public class BlackBoxRanking {
 		ranking.getElementByPosition(-1);
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testGetPositionFromNullElementValue() {
 
 		ranking.getPositionFromElementValue(null);
@@ -106,7 +106,7 @@ public class BlackBoxRanking {
 		assertEquals(0, location);
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testGetPositionFromElementReference() {
 		ranking.getPositionFromElementReference(null);
 	}
@@ -118,17 +118,17 @@ public class BlackBoxRanking {
 		assertEquals(0, location);
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testExistsNullValue() {
 		ranking.existsValue(null);
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testExistsNullReference() {
 		ranking.existsReference(null);
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCompareWithNull() {
 		ranking.compareWith(null);
 	}
