@@ -22,6 +22,7 @@ public class Ranking<Element> {
 	 * 
 	 * @param rankData
 	 *            array with size of 10
+	 * @throws IllegalArgumentException
 	 */
 	public Ranking(Element[] rankData) {
 		// TODO not implemented yet FAKE IMPLEMENTATION
@@ -38,6 +39,7 @@ public class Ranking<Element> {
 	 *            array of elements
 	 * @param topSize
 	 *            can be equal or bigger than rankData size
+	 * @throws IllegalArgumentException
 	 */
 	public Ranking(Element[] rankData, int topSize) {
 		// TODO not implemented yet FAKE IMPLEMENTATION
@@ -67,6 +69,7 @@ public class Ranking<Element> {
 	 * 
 	 * @param element
 	 * @return position the position of the element at the ranking
+	 * @throws IllegalArgumentException
 	 */
 	public int getPositionFromElementValue(Element element) {
 		// TODO Auto-generated method stub FAKE IMPL
@@ -80,6 +83,7 @@ public class Ranking<Element> {
 	 * @param element
 	 *            reference, not null
 	 * @return position the position of the element at the ranking
+	 * @throws IllegalArgumentException
 	 */
 	public int getPositionFromElementReference(Element element) {
 		// TODO Auto-generated method stub FAKE IMPL
@@ -91,6 +95,7 @@ public class Ranking<Element> {
 	 * 
 	 * @param element
 	 * @return
+	 * @throws IllegalArgumentException
 	 */
 	public boolean existsValue(Element element) {
 		// TODO Auto-generated method stub
@@ -102,6 +107,7 @@ public class Ranking<Element> {
 	 * 
 	 * @param element
 	 * @return
+	 * @throws IllegalArgumentException
 	 */
 	public boolean existsReference(Element element) {
 		// TODO Auto-generated method stub
@@ -116,6 +122,7 @@ public class Ranking<Element> {
 	 * 
 	 * @param targetRanking
 	 * @return array that shows gained or lost positions between two rankings
+	 * @throws IllegalArgumentException
 	 */
 	public int[] compareWith(Ranking<Element> targetRanking) {
 		// TODO Auto-generated method stub
