@@ -21,7 +21,7 @@ public class SequenceTestContest {
 		assertFalse(contest.closedNominations);
 		assertFalse(contest.closedVotations);
 		
-		String[] topos = new String[]{"raulillo","bimbas","ase el humilde","antooro","agapito","papito mi rey","yorx","cachi"};
+		String[] topos = new String[]{"raulillo","bimbas","ase el humilde","antooro","agapito","papito mi rey","jamon yorx","cachi"};
 		
 		contest.nominate(topos);
 		

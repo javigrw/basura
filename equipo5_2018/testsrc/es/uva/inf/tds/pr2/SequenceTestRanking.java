@@ -13,7 +13,7 @@ public class SequenceTestRanking {
 	@Test
 	public void test() {
 		
-		String[] topos = new String[]{"raulillo","bimbas","ase el humilde","antooro","agapito","papito mi rey","yorx","cachi"};
+		String[] topos = new String[]{"raulillo","bimbas","ase el humilde","antooro","agapito","papito mi rey","jamon yorx","cachi"};
 		
 		Ranking<String> rank = new Ranking<>(topos, 3);
 		
@@ -23,7 +23,7 @@ public class SequenceTestRanking {
 			assertTrue(rank.existsValue(topo));
 		}
 		
-		String[] otrosTopos = new String[]{"antooro","agapito","papito mi rey","yorx","raulillo","bimbas","ase el humilde","cachi"};
+		String[] otrosTopos = new String[]{"antooro","agapito","papito mi rey","jamon yorx","raulillo","bimbas","ase el humilde","cachi"};
 		Ranking<String> rank2 = new Ranking<>(otrosTopos, 3);
 		
 		
